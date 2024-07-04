@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(192, 192, 192, 0.7); /* Cinza transparente */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    font-family: Arial, sans-serif; /* Aplica a fonte Arial ao título h1 */
+    font-size: 24px; /* Tamanho do texto do título */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+h2 {
+    font-family: Arial, sans-serif; /* Aplica a fonte Arial ao título h2 */
+}
+
+h2 span.italic-underline {
+    font-style: italic; /* Aplica estilo itálico */
+    text-decoration: underline; /* Sublinhado */
+}
+.brand-selector {
+    display: inline-block;
+    margin: 20px auto;
+}
+.brand-selector a {
+    display: inline-block;
+    position: relative; /* Posição relativa para controlar o posicionamento do texto */
+}
+.brand-selector img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.brand-selector img:hover {
+    transform: scale(1.1);
+}
+.brand-selector img:after {
+    content: attr(alt); /* Mostra o atributo alt como conteúdo do pseudoelemento */
+    display: block;
+    position: absolute;
+    bottom: -25px; /* Ajusta conforme necessário para evitar a sombra */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.brand-selector a:hover img:after {
+    opacity: 1; /* Exibe a descrição ao passar o mouse */
+}
