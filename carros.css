@@ -89,3 +89,43 @@
     cursor: pointer;
     margin-top: 10px;
 }
+
+
+/* Auto - complete */
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 300px; /* largura do campo de entrada, ajuste conforme necessário */
+  }
+  
+  #myInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+  }
+  
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 99;
+    background-color: #fff;
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+  
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }

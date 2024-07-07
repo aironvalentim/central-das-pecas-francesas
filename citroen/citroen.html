@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,14 @@
     <link rel="stylesheet" href="../carros.css">
     <script src="../carros.js" defer></script>
 </head>
+
 <body>
     <div class="container">
         <h1>Escolha as peças para seu Citroën</h1>
-        
-        <!-- carros peugeot por ordem alfabética -->
-        <div class="car-select">
+        <h4>Agora, por favor, informe o modelo e o ano de fabricação do seu carro:</h4>
+        <!-- carros Citroën por ordem alfabética -->
+        <div class="form-container">
+            <div class="car-select">
             <label for="car-model">Modelo do Citroën:</label>
             <select id="car-model" name="car-model">
                 <option value="Citroën C3 1.2">C3 - 1.2</option>
@@ -27,10 +30,10 @@
                 <option value="Citroën Aircross 2.0">Aircross - 2.0</option>
                 <option value="Citroën Jumpy - diesel 1.6">Jumpy - diesel 1.6</option>
                 <option value="Citroën Jumpy - diesel 2.0">Jumpy - diesel 2.0</option>
-                
+
                 <!-- Adicione mais modelos conforme necessário -->
             </select>
-        
+
             <label for="car-year">Ano de Fabricação:</label>
             <select id="car-year" name="car-year">
                 <option value="1980">1980</option>
@@ -68,7 +71,7 @@
                 <option value="2012">2012</option>
                 <option value="2013">2013</option>
                 <option value="2014">2014</option>
-                <option value="2015">2015</option>
+                <option value="2005" selected>2015</option> <!-- Opção selecionada -->
                 <option value="2016">2016</option>
                 <option value="2017">2017</option>
                 <option value="2018">2018</option>
@@ -81,51 +84,31 @@
                 <!-- Adicione mais anos conforme necessário -->
             </select>
         </div>
-         <!--Formulário de seleção de peças -->
-        <div class="form-container">
-           <form id="order-form">
-                <div class="form-group">
-                    <label for="piece-category">Categoria:</label>
-                    <select id="piece-category" name="piece-category" onchange="selectPieceCategory()">
-                        <option value="Faróis">Faróis</option>
-                        <option value="Freios">Freios</option>
-                        <option value="Motor">Motor</option>
-                        <option value="Pneus">Pneus</option>
-                        <option value="Sistema de Arrefecimento">Sistema de Arrefecimento</option>
-                        <option value="Sistema de Combustível">Sistema de Combustível</option>
-                        <option value="Sistema de Direção">Sistema de Direção</option>
-                        <option value="Sistema Elétrico">Sistema Elétrico</option>
-                        <option value="Suspensão">Suspensão</option>
-                        <option value="Transmissão (Diferencial)">Transmissão (Diferencial)</option>
-                    </select>
-                </div>
-                <div class="form-group" id="piece-options" style="display: none;">
-                    <label for="piece">Peça:</label>
-                    <select id="piece" name="piece">
-                        <option value="vazio"></option>
-                    </select>
-                    <input type="text" id="custom-piece" name="custom-piece" placeholder="se preferir digite aqui o nome da peça">
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Quantidade:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" value="1">
-                </div>
-                <div class="form-group">
-                    <button type="button" onclick="addToCart()">Adicionar ao Carrinho</button>
-                </div>
-            </form>
 
-            <!-- Carrinho de compras -->
-            <div class="cart">
-                <h2>Carrinho de Compras</h2>
-                <div id="cart-items"></div>
-                <button class="checkout-btn" onclick="checkout()">peça seu orçamento</button>
-                <p>você será direcionado para o whats da empresa</p>
+        <div class="car-select">
+            <label for="piece">Digite o nome da peça:</label>
+            <div class="autocomplete">
+                <input id="myInput" type="text" placeholder="Digite o nome da peça...">
             </div>
         </div>
 
-        <p>Só realize o pagamento após recebimento das peças</p>
-   
+        <div class="form-group">
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="addToCart()">Adicionar ao Carrinho</button>
+        </div>
     </div>
+
+    <!-- Carrinho de compras -->
+    <div class="cart">
+        <h2>Carrinho de Compras</h2>
+        <div id="cart-items"></div>
+        <button class="checkout-btn" onclick="checkout()">Peça seu orçamento</button>
+        <p>Você será direcionado para o WhatsApp da empresa</p>
+    </div>
+</div>
 </body>
+
 </html>
