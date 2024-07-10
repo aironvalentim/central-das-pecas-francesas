@@ -12,20 +12,39 @@
 <body>
     <div class="container">
         <h1>Escolha as peças para seu Peugeot</h1>
-        <h4>Agora, por favor, informe o modelo e o ano de fabricação do seu carro:</h4>
+        <p>Informe as peças e solicite seu orçamento de forma rápida e prática, veja como utilizar nosso serviço: <br>
+            Primeiro, informe o modelo e o ano de fabricação do seu veículo. <br>
+
+            Indique o nome da peça que você precisa. <br>
+
+            Especifique a quantidade desejada da peça selecionada e clique
+            em "adicionar item para orçamento". <br>
+
+            Se precisar adicionar mais peças, repita os passos 2 e 3. <br>
+
+            Ao finalizar, clique no botão "Peça seu orçamento". Você será redirecionado para o
+            WhatsApp da Distribuidora Franco-Auto. <br>
+
+            Atendimento personalizado: Um de nossos colaboradores estará pronto para ajudá-lo e enviar seu orçamento em
+            pouco tempo.<br>
+            Boas compras!
+        </p>
+        <hr>
         <!-- carros Peugeot por ordem alfabética -->
         <div class="form-container">
             <div class="car-select">
                 <label for="car-model">Modelo do Peugeot:</label>
                 <select id="car-model" name="car-model">
-                    <option value="Captur">208 Hatch compacto</option>
-                    <option value="Peugeot 208 elétrico">208 elétrico (e-208)</option>
-                    <option value="Peugeot 3008">3008</option>
-                    <option value="Peugeot 308">308</option>
-                    <option value="Peugeot 408">408</option>
-                    <option value="Peugeot 5008">5008</option>
-                    <option value="Peugeot Expert">Expert</option>
-                    <option value="Peugeot Partner">Partner</option>
+                    <option value="Peugeot - Captur">Captur</option>
+                    <option value="Peugeot - Clio">Clio</option>
+                    <option value="Peugeot - Duster">Duster</option>
+                    <option value="Peugeot - Fluence">Fluence</option>
+                    <option value="Peugeot - Kwid">Kwid</option>
+                    <option value="Peugeot - Logan">Logan</option>
+                    <option value="Peugeot - Sandero">Sandero</option>
+                    <option value="Peugeot - Stepway">Stepway</option>
+                    <option value="Peugeot - Symbol">Symbol</option>
+                    <option value="Peugeot - Twingo">Twingo</option>
                     <!-- Adicione mais modelos conforme necessário -->
                 </select>
 
@@ -66,7 +85,7 @@
                     <option value="2012">2012</option>
                     <option value="2013">2013</option>
                     <option value="2014">2014</option>
-                    <option value="2005" selected>2015</option> <!-- Opção selecionada -->
+                    <option value="2015" selected>2015</option> <!-- Opção selecionada -->
                     <option value="2016">2016</option>
                     <option value="2017">2017</option>
                     <option value="2018">2018</option>
@@ -81,27 +100,26 @@
             </div>
 
             <div class="car-select">
-                <label for="piece">Digite o nome da peça:</label>
                 <div class="autocomplete">
+                    <label for="piece">Digite o nome da peça:</label>
                     <input id="myInput" type="text" placeholder="Digite o nome da peça...">
                 </div>
+                <div class="quantity-input">
+                    <label for="quantity">Quantidade:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1">
+                </div>
             </div>
-
             <div class="form-group">
-                <label for="quantity">Quantidade:</label>
-                <input type="number" id="quantity" name="quantity" min="1" value="1">
-            </div>
-            <div class="form-group">
-                <button type="button" onclick="addToCart()">Adicionar ao Carrinho</button>
+                <button type="button" onclick="addToCart()">adicionar item para orçamento</button>
             </div>
         </div>
 
-        <!-- Carrinho de compras -->
+        <!-- Itens selecionados para orçamento -->
         <div class="cart">
-            <h2>Carrinho de Compras</h2>
+            <h2>Itens selecionados para orçamento:</h2>
             <div id="cart-items"></div>
             <button class="checkout-btn" onclick="checkout()">Peça seu orçamento</button>
-            <p>Você será direcionado para o WhatsApp da empresa</p>
+            <p>Você será direcionado para o WhatsApp da Distribuidora Franco-Auto</p>
         </div>
     </div>
 </body>

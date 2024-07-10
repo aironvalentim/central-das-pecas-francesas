@@ -35,6 +35,8 @@ let currentFocus = -1;
 
 // Função para autocompletar com suporte a teclado
 function autocomplete(inp, arr) {
+    let currentFocus = -1;
+
     inp.addEventListener("input", function(e) {
         let val = this.value;
         closeAllLists();
@@ -60,41 +62,41 @@ function autocomplete(inp, arr) {
     });
 
     inp.addEventListener("keydown", function(e) {
-        let x = document.getElementById(this.id + "autocomplete-list");
-        if (x) x = x.getElementsByTagName("div");
-        if (e.keyCode === 40) {
+        let autocompleteItems = document.getElementById(this.id + "autocomplete-list");
+        if (autocompleteItems) autocompleteItems = autocompleteItems.getElementsByTagName("div");
+        if (e.key === "ArrowDown") {
             currentFocus++;
-            addActive(x);
-        } else if (e.keyCode === 38) {
+            addActive(autocompleteItems);
+        } else if (e.key === "ArrowUp") {
             currentFocus--;
-            addActive(x);
-        } else if (e.keyCode === 13) {
+            addActive(autocompleteItems);
+        } else if (e.key === "Enter") {
             e.preventDefault();
             if (currentFocus > -1) {
-                if (x) x[currentFocus].click();
+                if (autocompleteItems) autocompleteItems[currentFocus].click();
             }
         }
     });
 
-    function addActive(x) {
-        if (!x) return false;
-        removeActive(x);
-        if (currentFocus >= x.length) currentFocus = 0;
-        if (currentFocus < 0) currentFocus = (x.length - 1);
-        x[currentFocus].classList.add("autocomplete-active");
+    function addActive(autocompleteItems) {
+        if (!autocompleteItems) return false;
+        removeActive(autocompleteItems);
+        if (currentFocus >= autocompleteItems.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = autocompleteItems.length - 1;
+        autocompleteItems[currentFocus].classList.add("autocomplete-active");
     }
 
-    function removeActive(x) {
-        for (let i = 0; i < x.length; i++) {
-            x[i].classList.remove("autocomplete-active");
+    function removeActive(autocompleteItems) {
+        for (let i = 0; i < autocompleteItems.length; i++) {
+            autocompleteItems[i].classList.remove("autocomplete-active");
         }
     }
 
     function closeAllLists(elmnt) {
-        let items = document.getElementsByClassName("autocomplete-items");
-        for (let i = 0; i < items.length; i++) {
-            if (elmnt !== items[i] && elmnt !== inp) {
-                items[i].parentNode.removeChild(items[i]);
+        let autocompleteItems = document.getElementsByClassName("autocomplete-items");
+        for (let i = 0; i < autocompleteItems.length; i++) {
+            if (elmnt !== autocompleteItems[i] && elmnt !== inp) {
+                autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
             }
         }
     }
@@ -103,6 +105,7 @@ function autocomplete(inp, arr) {
         closeAllLists(e.target);
     });
 }
+
 
 autocomplete(inputField, carParts);
 
@@ -124,7 +127,21 @@ function addToCart() {
 }
 
 function checkout() {
-    let cartItems = document.getElementById("cart-items").innerText;
-    let whatsappMessage = encodeURIComponent("Olá, estou interessado nas seguintes peças: " + cartItems);
-    window.open("https://wa.me/+5581997881621?text=" + whatsappMessage, "_blank");
+    // Obter modelo de carro selecionado
+    let carModel = document.getElementById("car-model").value;
+
+    // Obter ano de fabricação selecionado
+    let carYear = document.getElementById("car-year").value;
+    
+    // Obter peças adicionadas no carrinho
+    let cartItems = document.getElementById("cart-items").innerText.trim();
+
+    // Construir mensagem para o WhatsApp
+    let message = `Olá, me passa o orçamento das seguintes peças:\n\n${carModel}, ano ${carYear}:\n${cartItems}`;
+
+    // Codificar a mensagem para URL
+    let whatsappMessage = encodeURIComponent(message);
+
+    // Abrir link do WhatsApp com a mensagem pré-preenchida
+    window.open(`https://wa.me/+5581997881621?text=${whatsappMessage}`, "_blank");
 }

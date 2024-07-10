@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,43 @@
     <link rel="stylesheet" href="../carros.css">
     <script src="../carros.js" defer></script>
 </head>
+
 <body>
     <div class="container">
         <h1>Escolha as peças para seu Alpine</h1>
-        <h4>Agora, por favor, informe o modelo e o ano de fabricação do seu carro:</h4>
-         <!-- carros Alpine por ordem alfabética -->
-         <div class="form-container">
+        <p>Informe as peças e solicite seu orçamento de forma rápida e prática, veja como utilizar nosso serviço: <br>
+            Primeiro, informe o modelo e o ano de fabricação do seu veículo. <br>
+
+            Indique o nome da peça que você precisa. <br>
+
+            Especifique a quantidade desejada da peça selecionada e clique
+            em "adicionar item para orçamento". <br>
+
+            Se precisar adicionar mais peças, repita os passos 2 e 3. <br>
+
+            Ao finalizar, clique no botão "Peça seu orçamento". Você será redirecionado para o
+            WhatsApp da Distribuidora Franco-Auto. <br>
+
+            Atendimento personalizado: Um de nossos colaboradores estará pronto para ajudá-lo e enviar seu orçamento em
+            pouco tempo.<br>
+            Boas compras!
+        </p>
+        <hr>
+        <!-- carros Alpine por ordem alfabética -->
+        <div class="form-container">
             <div class="car-select">
                 <label for="car-model">Modelo do Alpine:</label>
                 <select id="car-model" name="car-model">
-                    
+                    <option value="Alpine - Captur">Captur</option>
+                    <option value="Alpine - Clio">Clio</option>
+                    <option value="Alpine - Duster">Duster</option>
+                    <option value="Alpine - Fluence">Fluence</option>
+                    <option value="Alpine - Kwid">Kwid</option>
+                    <option value="Alpine - Logan">Logan</option>
+                    <option value="Alpine - Sandero">Sandero</option>
+                    <option value="Alpine - Stepway">Stepway</option>
+                    <option value="Alpine - Symbol">Symbol</option>
+                    <option value="Alpine - Twingo">Twingo</option>
                     <!-- Adicione mais modelos conforme necessário -->
                 </select>
 
@@ -57,7 +85,7 @@
                     <option value="2012">2012</option>
                     <option value="2013">2013</option>
                     <option value="2014">2014</option>
-                    <option value="2005" selected>2015</option> <!-- Opção selecionada -->
+                    <option value="2015" selected>2015</option> <!-- Opção selecionada -->
                     <option value="2016">2016</option>
                     <option value="2017">2017</option>
                     <option value="2018">2018</option>
@@ -72,28 +100,28 @@
             </div>
 
             <div class="car-select">
-                <label for="piece">Digite o nome da peça:</label>
                 <div class="autocomplete">
+                    <label for="piece">Digite o nome da peça:</label>
                     <input id="myInput" type="text" placeholder="Digite o nome da peça...">
                 </div>
+                <div class="quantity-input">
+                    <label for="quantity">Quantidade:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1">
+                </div>
             </div>
-
             <div class="form-group">
-                <label for="quantity">Quantidade:</label>
-                <input type="number" id="quantity" name="quantity" min="1" value="1">
-            </div>
-            <div class="form-group">
-                <button type="button" onclick="addToCart()">Adicionar ao Carrinho</button>
+                <button type="button" onclick="addToCart()">adicionar item para orçamento</button>
             </div>
         </div>
 
-        <!-- Carrinho de compras -->
+        <!-- Itens selecionados para orçamento -->
         <div class="cart">
-            <h2>Carrinho de Compras</h2>
+            <h2>Itens selecionados para orçamento:</h2>
             <div id="cart-items"></div>
             <button class="checkout-btn" onclick="checkout()">Peça seu orçamento</button>
-            <p>Você será direcionado para o WhatsApp da empresa</p>
+            <p>Você será direcionado para o WhatsApp da Distribuidora Franco-Auto</p>
         </div>
     </div>
 </body>
+
 </html>
