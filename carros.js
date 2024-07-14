@@ -111,19 +111,84 @@ autocomplete(inputField, carParts);
 
 // Funções para manipulação do carrinho de compras
 function addToCart() {
-    let item = document.getElementById("myInput").value;
+    let item = document.getElementById("myInput").value.trim();
     let quantity = parseInt(document.getElementById("quantity").value);
 
     if (item && quantity > 0) {
-        let cartItem = document.createElement("p");
-        cartItem.textContent = quantity + "x " + item;
-        document.getElementById("cart-items").appendChild(cartItem);
-        document.getElementById("myInput").value = "";
-        document.getElementById("quantity").value = "1";
+        let cartItems = document.getElementById("cart-items");
+        let existingItem = findExistingItem(item);
 
-        // Retornar o foco para o campo de entrada
-        document.getElementById("myInput").focus();
+        if (existingItem) {
+            // Se o item já existe, abrir opção de edição
+            let itemInfo = existingItem.querySelector(".item-info");
+            let editField = document.createElement("input");
+            editField.type = "text";
+            editField.value = itemInfo.textContent.trim().replace(/^\d+x\s/, ''); // Remove a quantidade do texto
+
+            // Substituir itemInfo pelo campo de edição
+            existingItem.replaceChild(editField, itemInfo);
+
+            // Alterar o evento de clique para aplicar as edições
+            editField.addEventListener("change", function() {
+                let newItemName = editField.value.trim();
+                if (newItemName) {
+                    itemInfo.textContent = quantity + "x " + newItemName;
+                } else {
+                    // Se o campo estiver vazio, remover o item
+                    existingItem.remove();
+                }
+
+                // Limpar campo de entrada e resetar quantidade
+                document.getElementById("myInput").value = "";
+                document.getElementById("quantity").value = "1";
+
+                // Retornar o foco para o campo de entrada
+                document.getElementById("myInput").focus();
+            });
+        } else {
+            // Se o item não existir, adicioná-lo normalmente
+            let cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+
+            let itemInfo = document.createElement("div");
+            itemInfo.classList.add("item-info");
+            itemInfo.textContent = quantity + "x " + item;
+
+            let removeButton = document.createElement("button");
+            removeButton.textContent = "Remover";
+            removeButton.classList.add("remove-item-btn", "cart-item-btn"); // Adicionando classes para estilo
+            removeButton.addEventListener("click", function() {
+                cartItem.remove();
+            });
+
+            cartItem.appendChild(itemInfo);
+            cartItem.appendChild(removeButton);
+            cartItems.appendChild(cartItem);
+
+            // Limpar campo de entrada e resetar quantidade
+            document.getElementById("myInput").value = "";
+            document.getElementById("quantity").value = "1";
+
+            // Retornar o foco para o campo de entrada
+            document.getElementById("myInput").focus();
+        }
     }
+}
+function handleEdit() {
+    // Este método é usado para o tratamento inicial de edição,
+    // mas a lógica real de edição é implementada diretamente em addToCart().
+    // Por isso, este método pode ser vazio ou não utilizado diretamente.
+}
+
+function findExistingItem(itemName) {
+    let cartItems = document.getElementById("cart-items").children;
+    for (let i = 0; i < cartItems.length; i++) {
+        let itemText = cartItems[i].textContent.trim();
+        if (itemText.includes(itemName)) {
+            return cartItems[i];
+        }
+    }
+    return null;
 }
 
 function checkout() {
@@ -132,12 +197,23 @@ function checkout() {
 
     // Obter ano de fabricação selecionado
     let carYear = document.getElementById("car-year").value;
-    
+
     // Obter peças adicionadas no carrinho
-    let cartItems = document.getElementById("cart-items").innerText.trim();
+    let cartItems = document.getElementById("cart-items").children;
+    let items = [];
+
+    for (let i = 0; i < cartItems.length; i++) {
+        let itemText = cartItems[i].textContent.trim();
+        let quantity = itemText.match(/^\d+/); // Regex para pegar a quantidade inicial
+        let itemName = itemText.replace(/\d+x\s/, '').replace('Remover', '').replace('Editar', '').trim(); // Remover a quantidade e palavras indesejadas
+
+        if (quantity && itemName) {
+            items.push(`${quantity[0]} - ${itemName}`);
+        }
+    }
 
     // Construir mensagem para o WhatsApp
-    let message = `Olá, me passa o orçamento das seguintes peças:\n\n${carModel}, ano ${carYear}:\n${cartItems}`;
+    let message = `Olá, me passe o orçamento das seguintes peças:\n\n${carModel}, ano ${carYear}:\n${items.join('\n')}`;
 
     // Codificar a mensagem para URL
     let whatsappMessage = encodeURIComponent(message);
