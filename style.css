@@ -7,23 +7,17 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(192, 192, 192, 0.7); /* Cinza transparente */
+    background-color: rgba(79, 119, 141, 1); 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 h1 {
     font-family: Arial, sans-serif; /* Aplica a fonte Arial ao título h1 */
-    font-size: 24px; /* Tamanho do texto do título */
+    font-size: 35px; /* Tamanho do texto do título */
     margin-bottom: 10px; /* Espaçamento inferior */
 }
-h2 {
-    font-family: Arial, sans-serif; /* Aplica a fonte Arial ao título h2 */
-}
 
-h2 span.italic-underline {
-    font-style: italic; /* Aplica estilo itálico */
-    text-decoration: underline; /* Sublinhado */
-}
+
 .brand-selector {
     display: inline-block;
     margin: 20px auto;
