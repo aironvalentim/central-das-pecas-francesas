@@ -11,7 +11,7 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(79, 119, 141, 0.3); /* Ajuste o valor alpha para mais transparência */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -63,6 +63,12 @@ h1 {
     cursor: pointer;
     flex: 1; /* Ocupa todo o espaço disponível */
     margin-top: 10px; /* Espaço acima do botão */
+    font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+    transition: background-color 0.3s ease; /* Transição suave para a mudança de cor de fundo */
+}
+
+.form-group button:hover {
+    background-color: #45a049; /* Cor de fundo alterada ao passar o mouse */
 }
 
 /* Itens selecionados para orçamento */
@@ -91,6 +97,35 @@ h1 {
 
 .cart-item .item-info {
     flex: 1;
+    display: flex;
+    justify-content: space-between; /* Alinha os botões à direita */
+}
+
+/* Estilo para o container dos botões */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+/* Estilo base para os botões */
+.button {
+    border: none; /* Remove a borda padrão */
+    border-radius: 20px; /* Borda arredondada */
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Estilo para o botão "Remover" */
+.remove-item-btn {
+    background-color: #dc3545; /* Vermelho metálico */
+    color: white;
+}
+
+.remove-item-btn:hover {
+    background-color: #c82333; /* Vermelho metálico escurecido no hover */
 }
 
 .cart-item .item-quantity {
@@ -107,6 +142,12 @@ h1 {
     cursor: pointer;
     margin-top: 20px;
     width: 100%;
+    font-size: 18px; /* Aumenta o tamanho da fonte para 18px */
+    transition: background-color 0.3s ease; /* Transição suave para a mudança de cor de fundo */
+}
+
+.checkout-btn:hover {
+    background-color: #2980b9; /* Cor de fundo alterada ao passar o mouse */
 }
 
 /* Responsividade */
@@ -165,4 +206,28 @@ h1 {
 
 .autocomplete-items input[type="hidden"] {
     display: none;
+}
+
+
+/* Estilos para os campos de entrada e seleção */
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não altere a largura total */
+    background-color: #ebeff0; /* Cor de fundo dos campos */
+    color: #333; /* Cor do texto nos campos */
+}
+
+/* Estilos para o texto das etiquetas */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555; /* Cor do texto das etiquetas */
 }
