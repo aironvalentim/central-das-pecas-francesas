@@ -213,7 +213,7 @@ function checkout() {
     }
 
     // Construir mensagem para o WhatsApp
-    let message = `Olá, me passe o orçamento das seguintes peças:\n\n${carModel}, ano ${carYear}:\n${items.join('\n')}`;
+    let message = `Opa! por favor, me passe o orçamento das seguintes peças:\n\n${carModel}, ano ${carYear}:\n${items.join('\n')}`;
 
     // Codificar a mensagem para URL
     let whatsappMessage = encodeURIComponent(message);

@@ -55,7 +55,7 @@ h1 {
 }
 
 .form-group button {
-    background-color: #4caf50;
+    background-color: #3498db;
     color: white;
     padding: 15px;
     border: none;
@@ -68,7 +68,7 @@ h1 {
 }
 
 .form-group button:hover {
-    background-color: #45a049; /* Cor de fundo alterada ao passar o mouse */
+    background-color: #2980b9; /* Cor de fundo alterada ao passar o mouse */
 }
 
 /* Itens selecionados para orçamento */
@@ -120,12 +120,12 @@ h1 {
 
 /* Estilo para o botão "Remover" */
 .remove-item-btn {
-    background-color: #dc3545; /* Vermelho metálico */
+    background-color: #8a8a8a; /* Cinza Metálico Claro */
     color: white;
 }
 
 .remove-item-btn:hover {
-    background-color: #c82333; /* Vermelho metálico escurecido no hover */
+    background-color: #4d4d4d; /* Cinza Metálico Escuro no hover */
 }
 
 .cart-item .item-quantity {
@@ -134,7 +134,7 @@ h1 {
 }
 
 .checkout-btn {
-    background-color: #3498db;
+    background-color: #4caf50;
     color: white;
     border: none;
     padding: 15px;
@@ -147,7 +147,7 @@ h1 {
 }
 
 .checkout-btn:hover {
-    background-color: #2980b9; /* Cor de fundo alterada ao passar o mouse */
+    background-color: #45a049;
 }
 
 /* Responsividade */
