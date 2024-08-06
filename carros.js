@@ -219,5 +219,5 @@ function checkout() {
     let whatsappMessage = encodeURIComponent(message);
 
     // Abrir link do WhatsApp com a mensagem pré-preenchida
-    window.open(`https://wa.me/+5581997881621?text=${whatsappMessage}`, "_blank");
+    window.open(`https://wa.me/+5581993397280?text=${whatsappMessage}`, "_blank");
 }
